@@ -21,8 +21,8 @@ UNDERLINE   = \033[4m
 BLINK       = \033[5m
 
 # Компилятор и флаги
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = g++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Название программы
 NAME = account_tests
@@ -47,11 +47,11 @@ all: $(NAME)
 	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀$(DEF_COLOR)"
 
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+all: $(NAME)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	chmod +x $(NAME)
 
 clean:
 	rm -f $(OBJS)
