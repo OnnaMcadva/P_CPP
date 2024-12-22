@@ -22,16 +22,15 @@ BLINK       = \033[5m
 
 
 NAME = megaphone
-
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = g++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀⠀⠀⠀              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀$(DEF_COLOR)"
+	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀⠀⠀⠀              ⠀⠀⠀⠀⠀⠀⠀⠀⠀ $(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀$(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀$(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀$(DEF_COLOR)"
@@ -39,10 +38,13 @@ all: $(NAME)
 	@echo "$(BOLD)$(GREEN_BR)⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀$(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀$(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀$(DEF_COLOR)"
-	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀ $(DEF_COLOR)"
+	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀$(DEF_COLOR)"
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	chmod +x $(NAME)
 
 clean:
 	rm -f $(OBJS)
