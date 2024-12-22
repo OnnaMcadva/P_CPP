@@ -1,6 +1,9 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 
+// Little problem in ex01 - the "add" command accpet empty fields 
+// and "search" command has problem when index is out of range.
+
 int main() {
     PhoneBook phoneBook;
     std::string command;
