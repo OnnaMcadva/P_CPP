@@ -8,14 +8,9 @@ GRAY        = "\033[0;90m"
 YELLOW      = "\033[0;93m"
 GREEN       = "\033[0;92m"
 
-FILES = Zombie \
-		newZombie \
-		randomChump \
-		main \
+FILES = main
 
 SRCS = $(addsuffix .cpp, $(FILES))
-
-HDRS = $(wildcard *.hpp)
 
 all: $(NAME)
 
