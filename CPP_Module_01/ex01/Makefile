@@ -1,4 +1,4 @@
-NAME = my_very_first_horde
+NAME = Moar_brainz
 CC = clang++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 RM = rm -rf
