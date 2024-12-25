@@ -42,7 +42,6 @@ all: $(NAME)
 	@echo "$(BOLD)$(GREEN_BR)⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀$(DEF_COLOR)"
 	@echo "$(BOLD)$(GREEN_BR)⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀⠀                  ⠀⠀⠀⠀⠀⠀⠀⠀⠀ $(DEF_COLOR)"
 
-all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
