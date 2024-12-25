@@ -24,7 +24,7 @@ all: $(NAME)
 	@printf $(GREEN)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n"
 	@printf $(GREEN)"\n"
 
-$(NAME): $(SRCS) $(HDRS)
+$(NAME): $(SRCS)
 	@printf $(GRAY)
 	$(CC) $(CPP_FLAGS) -o $(NAME) $(SRCS)
 	@printf $(DEF_COLOR)
