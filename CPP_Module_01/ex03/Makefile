@@ -1,4 +1,4 @@
-NAME = my_very_first_zombie
+NAME = Unnecessary_violence
 CC = clang++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 RM = rm -rf
