@@ -1,4 +1,4 @@
-NAME = my_very_first_zombie
+NAME = HI_THIS_IS_BRAIN
 CC = clang++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 RM = rm -rf
