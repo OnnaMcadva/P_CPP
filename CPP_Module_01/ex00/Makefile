@@ -21,10 +21,8 @@ UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
 NAME = BraiiiiiiinnnzzZ
-CC = clang++
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address \
-            -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 \
-            -L/usr/lib/x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11 -lstdc++
+CC = g++
+CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 RM = rm -rf
 
