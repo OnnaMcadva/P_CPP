@@ -1,4 +1,4 @@
-NAME = Harl_filter
+NAME = my_very_first_zombie
 CC = clang++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 RM = rm -rf
@@ -8,7 +8,9 @@ GRAY        = "\033[0;90m"
 YELLOW      = "\033[0;93m"
 GREEN       = "\033[0;92m"
 
-FILES =	Harl \
+FILES = Zombie \
+		newZombie \
+		randomChump \
 		main \
 
 SRCS = $(addsuffix .cpp, $(FILES))
