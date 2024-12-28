@@ -20,7 +20,7 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Unnecessary_violence
+NAME = unnecessaryViolence
 CC = g++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf

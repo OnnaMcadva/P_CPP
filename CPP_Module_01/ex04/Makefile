@@ -20,7 +20,7 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Sed_is_for_losers
+NAME = sedIsForLosers
 CC = g++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf

@@ -20,7 +20,7 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = HI_THIS_IS_BRAIN
+NAME = hiThisIsBrain
 CC = g++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
@@ -39,7 +39,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n"
-	@printf $(GREEN)"\n"
+	@printf $(BOLD)$(RED)"🎯 The brain is mine, but whose skull is it? 🎯\n\n"
 
 $(NAME): $(SRCS)
 	@printf $(GRAY)

@@ -3,7 +3,7 @@
 
 int main() {
     int N = 7;
-    std::string name = "my_little_zomby";
+    std::string name = "myLittleZomby";
 
     Zombie* horde = zombieHorde(N, name);
     for (int i = 0; i < N; ++i) {

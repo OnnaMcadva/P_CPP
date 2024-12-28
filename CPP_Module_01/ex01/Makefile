@@ -20,7 +20,7 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Moar_brainz
+NAME = MoarBrainz
 CC = g++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
@@ -43,7 +43,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n"
-	@printf $(BOLD)$(RED)"Zombies are ready to announce their presence!\n\n"
+	@printf $(BOLD)$(RED)"🎯 Zombies are ready to announce their presence! 🎯\n\n"
 
 $(NAME): $(SRCS) $(HDRS)
 	@printf $(GRAY)

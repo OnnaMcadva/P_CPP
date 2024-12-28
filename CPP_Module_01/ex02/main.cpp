@@ -23,7 +23,7 @@ int main() {
 
     std::cout << GREEN "Value of the string variable: " DEF_COLOR << str << std::endl;
     std::cout << BLUE "Value pointed to by stringPTR: " DEF_COLOR << *stringPTR << std::endl;
-    std::cout << INDIGO "Value pointed to by stringREF: " DEF_COLOR << stringREF << std::endl;
+    std::cout << VIOLET "Value pointed to by stringREF: " DEF_COLOR << stringREF << std::endl;
 
     return 0;
 }

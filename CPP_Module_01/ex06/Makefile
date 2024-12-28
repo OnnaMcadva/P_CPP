@@ -1,17 +1,32 @@
-NAME = my_very_first_zombie
-CC = clang++
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
-RM = rm -rf
-
+# Colors
 DEF_COLOR   = "\033[0;39m"
 GRAY        = "\033[0;90m"
 YELLOW      = "\033[0;93m"
 GREEN       = "\033[0;92m"
+RED         = "\033[0;91m"
+BLUE        = "\033[0;94m"
+MAGENTA     = "\033[0;95m"
+CYAN        = "\033[0;96m"
+WHITE       = "\033[0;97m"
+ORANGE      = "\033[38;5;222m"
+GREEN_BR    = "\033[38;5;118m"
+YELLOW_BR   = "\033[38;5;227m"
+PINK_BR     = "\033[38;5;206m"
+BLUE_BR     = "\033[38;5;051m"
+PINK_BRR     = "\033[38;5;219m"
 
-FILES = Zombie \
-		newZombie \
-		randomChump \
-		main \
+# Text styles
+BOLD        = "\033[1m"
+UNDERLINE   = "\033[4m"
+BLINK       = "\033[5m"
+
+NAME = harlFilter
+CC = clang++
+CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
+RM = rm -rf
+
+FILES = Harl \
+		main
 
 SRCS = $(addsuffix .cpp, $(FILES))
 
@@ -27,7 +42,7 @@ all: $(NAME)
 	@printf $(GREEN)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(GREEN)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(GREEN)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n"
-	@printf $(GREEN)"\n"
+	@printf $(BOLD)$(RED)"🎯 I do love having extra bacon! 🎯\n\n"
 
 $(NAME): $(SRCS) $(HDRS)
 	@printf $(GRAY)

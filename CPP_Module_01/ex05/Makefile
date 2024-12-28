@@ -20,7 +20,7 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Harl_2.0
+NAME = Harl2.0
 CC = g++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
@@ -42,7 +42,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n"
-	@printf $(BOLD)$(RED)"🎯 Compilation successful! Harl ........... 🎯\n\n"
+	@printf $(BOLD)$(RED)"🎯 Do you know Harl? We all do, do we? 🎯\n\n"
 
 $(NAME): $(SRCS) $(HDRS)
 	@printf $(GRAY)
