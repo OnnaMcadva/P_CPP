@@ -12,3 +12,8 @@ Namespaces, classes, member functions, stdio streams, initialization lists, stat
 C++ - Module 01
 
 Memory allocation, pointers to members, references, switch statement
+
+
+C++ - Module 02
+
+Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
