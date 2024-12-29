@@ -21,8 +21,8 @@ UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
 NAME = harlFilter
-CC = clang++
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
+CC = g++
+CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
 FILES = Harl \
@@ -55,6 +55,10 @@ clean:
 	@printf $(DEF_COLOR)
 
 fclean: clean
+
+re: clean all
+
+phony: all clean fclean re
 
 re: clean all
 
