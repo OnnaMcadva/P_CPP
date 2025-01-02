@@ -4,17 +4,17 @@
 https://youtube.com/playlist?list=PLmSYEYYGhnBviRYhIDty-CSTDS16a3whl&si=a9XRXD-z2pfmIwRE
 
 
-C++ - Module 00
+### C++ - Module 00
 
 Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuf
 
 
-C++ - Module 01
+### C++ - Module 01
 
 Memory allocation, pointers to members, references, switch statement
 
 
-C++ - Module 02
+### C++ - Module 02
 
 Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
 
