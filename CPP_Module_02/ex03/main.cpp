@@ -4,9 +4,14 @@
 #include <iostream>
 
 int main() {
-    Point a(0, 0);
-    Point b(10, 0);
+    Point a(10, 0);
+    Point b(0, 0);
     Point c(0, 10);
+
+    if (!isValidTriangle(a, b, c)) {
+    std::cerr << "\033[31mError:\033[0m The points do not form a valid triangle!" << std::endl;
+    return 1;
+    }
 
     Point p1(2, 2);    // Внутри треугольника
     Point p2(5, 5);    // Вне треугольника
