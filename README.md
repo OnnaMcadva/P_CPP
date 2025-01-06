@@ -26,3 +26,8 @@ Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form
 
 
 ![Screenshot from 2025-01-05 21-20-21](https://github.com/user-attachments/assets/dd989ee8-e368-4312-b007-92bf14eecefb)
+
+
+### C++ - Module 03
+
+Inheritance
