@@ -3,6 +3,12 @@
 #include "bsp.hpp"
 #include <iostream>
 
+/*
+    The name of members should not start with underscore as that is reserved bz the C++ language. 
+    Some other nitpicks or opinions include not using this pointer to access members inside methods
+    and that some comparison operator may be defined using other comp. ops.
+*/
+
 int main() {
     Point a(10, 0);
     Point b(0, 0);
