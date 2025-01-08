@@ -58,3 +58,8 @@ void ClapTrap::beRepaired(unsigned int amount) {
     std::cout << "ClapTrap " << m_name << " repairs itself, gaining "
     << amount << " hit points! Current HP: " << m_hitPoints << std::endl;
 }
+
+// Реализация метода getName
+std::string ClapTrap::getName() const {
+    return m_name;
+}

@@ -4,7 +4,8 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+// Используем виртуальное наследование от ClapTrap для FragTrap и ScavTrap
+class DiamondTrap : public virtual FragTrap, public virtual ScavTrap {
 private:
     std::string name;
 

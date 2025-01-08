@@ -14,16 +14,16 @@ protected:
 public:
     ClapTrap(const std::string &name);
     ClapTrap(const ClapTrap &other);
-    ClapTrap &operator=(const ClapTrap &other);
     virtual ~ClapTrap();
-    
-    std::string getName() const {
-        return m_name;
-    }
 
     virtual void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+
+    std::string getName() const;
+    unsigned int getHitPoints() const;
+    unsigned int getEnergyPoints() const;
+    unsigned int getAttackDamage() const;
 };
 
 #endif
