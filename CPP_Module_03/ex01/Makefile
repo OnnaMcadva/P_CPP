@@ -34,6 +34,15 @@ SRCS = $(addsuffix .cpp, $(FILES))
 
 HDRS = $(wildcard *.hpp)
 
+OBJS_DIR = obj
+OBJ_DIRS = $(OBJS_DIR)
+OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(FILES)))
+
+$(OBJS_DIR)/%.o: %.cpp
+	@printf $(GRAY)
+	@mkdir -p $(OBJS_DIR)
+	$(CC) $(CPP_FLAGS) -c -o $@ $<
+
 all: $(NAME)
 
 	@printf $(BOLD)$(GREEN_BR)"\n"
@@ -46,18 +55,18 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
 	@printf $(BOLD)$(RED)"💖 Serena, my love! 💖\n\n"
 
-$(NAME): $(SRCS) $(HDRS)
+$(NAME): $(OBJS)
 	@printf $(GRAY)
-	$(CC) $(CPP_FLAGS) -o $(NAME) $(SRCS)
+	$(CC) $(CPP_FLAGS) -o $(NAME) $(OBJS)
 	@printf $(DEF_COLOR)
 
 clean:
 	@printf $(YELLOW)
-	$(RM) $(NAME)
+	$(RM) $(OBJS_DIR) $(NAME)
 	@printf $(DEF_COLOR)
 
 fclean: clean
 
 re: clean all
 
-phony: all clean fclean re
+.PHONY: all clean fclean re

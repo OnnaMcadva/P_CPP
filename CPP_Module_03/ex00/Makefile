@@ -13,7 +13,7 @@ GREEN_BR    = "\033[38;5;118m"
 YELLOW_BR   = "\033[38;5;227m"
 PINK_BR     = "\033[38;5;206m"
 BLUE_BR     = "\033[38;5;051m"
-PINK_BRR     = "\033[38;5;219m"
+PINK_BRR    = "\033[38;5;219m"
 
 # Text styles
 BOLD        = "\033[1m"
@@ -26,12 +26,20 @@ CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -Wpedantic -g -fsanitize=address
 
 RM = rm -rf
 
-FILES =	main \
-		ClapTrap
+FILES = main ClapTrap
 
 SRCS = $(addsuffix .cpp, $(FILES))
 
 HDRS = $(wildcard *.hpp)
+
+OBJS_DIR = obj
+OBJ_DIRS = $(OBJS_DIR)
+OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(FILES)))
+
+$(OBJS_DIR)/%.o: %.cpp
+	@printf $(GRAY)
+	@mkdir -p $(OBJS_DIR)
+	$(CC) $(CPP_FLAGS) -c -o $@ $<
 
 all: $(NAME)
 
@@ -45,18 +53,18 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
 	@printf $(BOLD)$(RED)"🎯 Aaaaand... OPEN! 🎯\n\n"
 
-$(NAME): $(SRCS) $(HDRS)
+$(NAME): $(OBJS)
 	@printf $(GRAY)
-	$(CC) $(CPP_FLAGS) -o $(NAME) $(SRCS)
+	$(CC) $(CPP_FLAGS) -o $(NAME) $(OBJS)
 	@printf $(DEF_COLOR)
 
 clean:
 	@printf $(YELLOW)
-	$(RM) $(NAME)
+	$(RM) $(OBJS_DIR) $(NAME)
 	@printf $(DEF_COLOR)
 
 fclean: clean
 
 re: clean all
 
-phony: all clean fclean re
+.PHONY: all clean fclean re

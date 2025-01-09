@@ -3,9 +3,9 @@
 int main() {
     std::cout << "--- Testing DiamondTrap ---" << std::endl;
 
-    DiamondTrap diamond("Diamond");
+    DiamondTrap diamond("\033[34m💎 Diamond\033[0m");
 
-    diamond.attack("Enemy");
+    diamond.attack("\033[32mEnemy\033[0m");
 
     diamond.whoAmI();
 
@@ -13,7 +13,7 @@ int main() {
     diamond.beRepaired(10);
 
     DiamondTrap diamondCopy = diamond;
-    diamondCopy.attack("Another Enemy");
+    diamondCopy.attack("\033[33mAnother Enemy\033[0m");
 
     return 0;
 }
