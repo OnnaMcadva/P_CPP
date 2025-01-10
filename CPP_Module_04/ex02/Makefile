@@ -22,7 +22,7 @@ BLINK       = "\033[5m"
 
 NAME = AbstractClass
 CC = c++
-CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic -g -fsanitize=address
+CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
 
 RM = rm -rf
 
@@ -70,4 +70,4 @@ fclean: clean
 
 re: clean all
 
-phony: all clean fclean re
+.PHONY: all clean fclean re

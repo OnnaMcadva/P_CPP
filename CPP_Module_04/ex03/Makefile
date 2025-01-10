@@ -13,24 +13,21 @@ GREEN_BR    = "\033[38;5;118m"
 YELLOW_BR   = "\033[38;5;227m"
 PINK_BR     = "\033[38;5;206m"
 BLUE_BR     = "\033[38;5;051m"
-PINK_BRR     = "\033[38;5;219m"
+PINK_BRR    = "\033[38;5;219m"
 
 # Text styles
 BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Brain
+NAME = InterfaceRecap
+
 CC = c++
 CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
 
 RM = rm -rf
 
-FILES =	main \
-		Animal \
-		Cat \
-		Dog \
-		Brain
+FILES = main Ice Cure Character MateriaSource
 
 SRCS = $(addsuffix .cpp, $(FILES))
 
@@ -46,7 +43,6 @@ $(OBJS_DIR)/%.o: %.cpp
 	$(CC) $(CPP_FLAGS) -c -o $@ $<
 
 all: $(NAME)
-
 	@printf $(BOLD)$(GREEN_BR)"\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀\n"
@@ -55,7 +51,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
-	@printf $(BOLD)$(RED)"🎯 I don’t want to set the world on fire 🎯\n\n"
+	@printf $(BOLD)$(RED)"🎯 Interface & recap 🎯\n\n"
 
 $(NAME): $(OBJS)
 	@printf $(GRAY)
@@ -69,6 +65,6 @@ clean:
 
 fclean: clean
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re
