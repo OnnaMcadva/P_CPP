@@ -22,7 +22,7 @@ BLINK       = "\033[5m"
 
 NAME = Polymorphism
 CC = c++
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -Wpedantic #-g -fsanitize=address
+CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
 
 RM = rm -rf
 
