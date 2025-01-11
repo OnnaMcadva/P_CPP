@@ -20,21 +20,21 @@ int main() {
     delete j;
     delete i;
 
-    // std::cout << "\n--- Testing Copy and Assignment ---\n";
+    std::cout << "\n--- Testing Copy and Assignment ---\n";
 
-    // Dog dog1;
-    // Dog dog2 = dog1;
-    // Dog dog3;
-    // dog3 = dog1;
+    Dog dog1;
+    Dog dog2 = dog1;
+    Dog dog3;
+    dog3 = dog1;
 
-    // std::cout << "\n--- Testing Array of Animals ---\n";
+    std::cout << "\n--- Testing Array of Animals ---\n";
 
-    // const Animal* animals[2] = { new Dog(), new Cat() };
+    const Animal* animals[2] = { new Dog(), new Cat() };
 
-    // for (int i = 0; i < 2; ++i) {
-    //     animals[i]->makeSound();
-    //     delete animals[i];
-    // }
+    for (int k = 0; k < 2; ++k) {
+        animals[k]->makeSound();
+        delete animals[k];
+    }
 
     std::cout << "\n--- Testing WrongAnimal and WrongCat ---\n";
 
