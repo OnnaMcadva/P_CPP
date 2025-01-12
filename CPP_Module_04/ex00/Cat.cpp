@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : Animal() {
     type = "Cat";
     std::cout << "\033[32mCat created\033[0m" << std::endl;
 }

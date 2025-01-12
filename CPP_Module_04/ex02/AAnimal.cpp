@@ -17,7 +17,7 @@ AAnimal& AAnimal::operator=(const AAnimal& other) {
 }
 
 AAnimal::~AAnimal() {
-    std::cout << "\033[31mAAAAAnimal destroyed\033[0m" << std::endl;
+    std::cout << "\033[31mAbstract Animal created\033[0m" << std::endl;
 }
 
 std::string AAnimal::getType() const {

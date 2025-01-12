@@ -1,8 +1,8 @@
 #include "Dog.hpp"
 
-Dog::Dog() {
+Dog::Dog() : AAnimal() {
     type = "Dog";
-    std::cout << "\033[32mDog created\033[0m" << std::endl;
+    std::cout << "\033[33mDog created\033[0m" << std::endl;
 }
 
 Dog::Dog(const Dog& other) : AAnimal(other) {

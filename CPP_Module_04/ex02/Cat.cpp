@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : AAnimal() {
     type = "Cat";
     std::cout << "\033[32mCat created\033[0m" << std::endl;
 }
@@ -22,5 +22,5 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-    std::cout << "\033[33mMeow! Meow!\033[0m" << std::endl;
+    std::cout << "\033[32mMeow! Meow!\033[0m" << std::endl;
 }

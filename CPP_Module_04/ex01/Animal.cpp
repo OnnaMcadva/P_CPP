@@ -1,7 +1,7 @@
 #include "Animal.hpp"
 
 Animal::Animal() : type("Animal") {
-    std::cout << "\033[35mAnimal created\033[0m" << std::endl;
+    std::cout << "Animal created" << std::endl;
 }
 
 Animal::Animal(const Animal& other) : type(other.type) {
@@ -17,7 +17,7 @@ Animal& Animal::operator=(const Animal& other) {
 }
 
 Animal::~Animal() {
-    std::cout << "\033[31mAnimal destroyed\033[0m" << std::endl;
+    std::cout << "Animal destroyed" << std::endl;
 }
 
 std::string Animal::getType() const {
