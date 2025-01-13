@@ -27,7 +27,7 @@ CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=
 
 RM = rm -rf
 
-FILES = main Ice Cure Character MateriaSource
+FILES = main Ice Cure Fire Character MateriaSource
 
 SRCS = $(addsuffix .cpp, $(FILES))
 
