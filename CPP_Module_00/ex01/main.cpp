@@ -10,18 +10,21 @@ int main() {
 
     std::cout << "Welcome to My Awesome PhoneBook!\n";
     while (true) {
-        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-        std::getline(std::cin, command);
+    std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+    if (!std::getline(std::cin, command)) {  // Проверка состояния std::cin
+        std::cout << "\nInput terminated. Exiting program.\n";
+        break;  // Выход из цикла при EOF
+    }
 
-        if (command == "ADD") {
-            phoneBook.addContact();
-        } else if (command == "SEARCH") {
-            phoneBook.searchContact();
-        } else if (command == "EXIT") {
-            break;
-        } else {
-            std::cout << "Invalid command!\n";
-        }
+    if (command == "ADD") {
+        phoneBook.addContact();
+    } else if (command == "SEARCH") {
+        phoneBook.searchContact();
+    } else if (command == "EXIT") {
+        break;
+    } else {
+        std::cout << "Invalid command!\n";
+    }
     }
 
     std::cout << "Goodbye!\n";
