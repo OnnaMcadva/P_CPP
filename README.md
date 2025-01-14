@@ -35,3 +35,7 @@ Inheritance
 ### C++ - Module 04
 
 Subtype polymorphism, abstract classes, interfaces
+
+### C++ - Module 05
+
+Repetition and Exceptions
