@@ -21,7 +21,7 @@ UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
 NAME = harlFilter
-CC = g++
+CC = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 

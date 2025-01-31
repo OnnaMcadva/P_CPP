@@ -39,20 +39,32 @@ void Harl::error() {
     std::cout << "I want to speak to the manager now.\n" << DEF_COLOR << std::endl;
 }
 
+Harl::LogLevel Harl::getLogLevel(std::string level) {
+    if (level == "DEBUG") return DEBUG;
+    if (level == "INFO") return INFO;
+    if (level == "WARNING") return WARNING;
+    if (level == "ERROR") return ERROR;
+    return UNKNOWN;
+}
+
 void Harl::complain(std::string level) {
-    typedef void (Harl::*HarlFunction)();
-    HarlFunction functions[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+    LogLevel logLevel = getLogLevel(level);
 
-    std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
-
-    for (size_t i = 0; i < 4; i++) {
-        if (levels[i] == level) {
-            for (size_t j = i; j < 4; j++) {
-                (this->*functions[j])();
-            }
-            return;
-        }
+    switch (logLevel) {
+        case DEBUG:
+            debug();
+            // fallthrough
+        case INFO:
+            info();
+            // fallthrough
+        case WARNING:
+            warning();
+            // fallthrough
+        case ERROR:
+            error();
+            break;
+        default:
+            std::cout << VIOLET << "[ Probably complaining about insignificant problems ]" << DEF_COLOR << std::endl;
+            break;
     }
-
-    std::cout << VIOLET << "[ Probably complaining about insignificant problems ]" << DEF_COLOR << std::endl;
 }

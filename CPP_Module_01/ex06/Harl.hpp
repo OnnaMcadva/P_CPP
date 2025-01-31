@@ -1,5 +1,4 @@
-#ifndef HARL_HPP
-#define HARL_HPP
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -15,6 +14,6 @@ private:
     void info();
     void warning();
     void error();
+    enum LogLevel { DEBUG, INFO, WARNING, ERROR, UNKNOWN };
+    LogLevel getLogLevel(std::string level);
 };
-
-#endif
