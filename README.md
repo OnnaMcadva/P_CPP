@@ -39,3 +39,10 @@ Subtype polymorphism, abstract classes, interfaces
 ### C++ - Module 05
 
 Repetition and Exceptions
+
+### C++ - Module 06
+
+
+
+![Screenshot from 2025-02-02 21-31-33](https://github.com/user-attachments/assets/5c3b2aea-800c-4f2d-89e0-0d802f769e0e)
+
