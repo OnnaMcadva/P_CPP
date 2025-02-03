@@ -51,7 +51,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
-	@printf $(BOLD)$(MAGENTA)"🎯    Conversion of scalar types    🎯\n\n"
+	@printf $(BOLD)$(MAGENTA)"💻    Conversion of scalar types   🛠️ 🎯\n\n"
 
 $(NAME): $(OBJS)
 	@printf $(GRAY)

@@ -20,14 +20,14 @@ BOLD        = "\033[1m"
 UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
-NAME = Convert
+NAME = Identify
 
 CC = c++
 CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
 
 RM = rm -rf
 
-FILES = ScalarConverter main
+FILES = main A B C Base Generate Identify
 
 SRCS = $(addsuffix .cpp, $(FILES))
 
@@ -51,7 +51,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
-	@printf $(BOLD)$(MAGENTA)"🎯    Conversion of scalar types    🎯\n\n"
+	@printf $(BOLD)$(MAGENTA)"🚀    Identify real type    🎯\n\n"
 
 $(NAME): $(OBJS)
 	@printf $(GRAY)
