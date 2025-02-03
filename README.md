@@ -59,10 +59,15 @@ C++ casts
 
 ### C++ - Module 07
 
+C++ templates
+
 ### C++ - Module 08
+
+Templated containers, iterators, algorithms
 
 ### C++ - Module 09
 
+STL
 
 
 ![Screenshot from 2025-02-02 21-31-33](https://github.com/user-attachments/assets/5c3b2aea-800c-4f2d-89e0-0d802f769e0e)
