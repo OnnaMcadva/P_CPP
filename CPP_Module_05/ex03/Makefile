@@ -23,7 +23,7 @@ BLINK       = "\033[5m"
 NAME =  Intern
 
 CC = c++
-CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
+CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98
 
 RM = rm -rf
 
@@ -55,7 +55,7 @@ all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"⠀⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷⠀\n\n"
-	@printf $(BOLD)$(BLUE_BR)"🎯 No, you need form 28B, not 28C... 🎯\n\n"
+	@printf $(BOLD)$(BLUE_BR)"🎯 At least this beats coffee-making 🎯\n\n"
 
 $(NAME): $(OBJS)
 	@printf $(GRAY)
