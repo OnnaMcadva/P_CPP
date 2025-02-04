@@ -23,7 +23,7 @@ BLINK       = "\033[5m"
 NAME = Convert
 
 CC = c++
-CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -Wpedantic #-g -fsanitize=address
+CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98
 
 RM = rm -rf
 
