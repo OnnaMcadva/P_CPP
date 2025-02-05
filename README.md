@@ -150,6 +150,9 @@ C++ casts
 
 C++ templates
 
+![Screenshot from 2025-02-05 21-13-58](https://github.com/user-attachments/assets/30a71d8b-77f5-48c2-aa43-b225ca59d42f)
+
+
 ### C++ - Module 08
 
 Templated containers, iterators, algorithms
