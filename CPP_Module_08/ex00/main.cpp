@@ -24,3 +24,20 @@ int main() {
 
     return 0;
 }
+
+/* test
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> vec;
+    std::cout << "Initial size: " << vec.size() << std::endl; // 0
+    std::cout << "Initial capacity: " << vec.capacity() << std::endl; // 0 или небольшое число в зависимости от реализации
+
+    vec.push_back(1);
+    std::cout << "Size after adding one element: " << vec.size() << std::endl; // 1
+    std::cout << "Capacity after adding one element: " << vec.capacity() << std::endl; // >= 1
+
+    return 0;
+}
+*/
