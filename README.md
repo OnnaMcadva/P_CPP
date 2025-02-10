@@ -202,6 +202,16 @@ Templated containers, iterators, algorithms
 
 STL
 
+#### ex00
+
+В этом задании используется std::map, потому что:
+
+    Он обеспечивает быстрый поиск по ключу (O(log n)).
+
+    Автоматически сортирует элементы по ключу.
+
+    Удобен для хранения данных в формате "ключ-значение".
+
 
 ![Screenshot from 2025-02-02 21-31-33](https://github.com/user-attachments/assets/5c3b2aea-800c-4f2d-89e0-0d802f769e0e)
 
