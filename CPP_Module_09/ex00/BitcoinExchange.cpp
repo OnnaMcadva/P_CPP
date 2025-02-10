@@ -4,9 +4,9 @@
 #include <iostream>
 #include <cstdlib>
 
-BitcoinExchange::BitcoinExchange() {}
+BitcoinExchange::BitcoinExchange() : databaseLoaded(false) {}
 
-BitcoinExchange::BitcoinExchange(const std::string& database) {
+BitcoinExchange::BitcoinExchange(const std::string& database) : databaseLoaded(false) {
     loadDatabase(database);
 }
 
@@ -30,6 +30,11 @@ void BitcoinExchange::loadDatabase(const std::string& database) {
         }
     }
     file.close();
+    databaseLoaded = true;
+}
+
+bool BitcoinExchange::isDatabaseLoaded() const {
+    return databaseLoaded;
 }
 
 bool BitcoinExchange::isValidDate(const std::string& date) {
@@ -78,15 +83,14 @@ std::string BitcoinExchange::findClosestDate(const std::string& date) {
 void BitcoinExchange::processInput(const std::string& inputFile) {
     std::ifstream file(inputFile.c_str());
     if (!file.is_open()) {
-        std::cerr << "👿 Error: could not open file." << std::endl;
+        std::cerr << "Error: could not open file." << std::endl;
         return;
     }
 
     std::string line;
-    std::getline(file, line); // заголовок
+    std::getline(file, line);
     // std::cout << line << std::endl;
     while (std::getline(file, line)) {
-
         size_t separatorPos = line.find('|');
         if (separatorPos == std::string::npos) {
             std::cerr << "👿 Error: bad input => " << line << std::endl;
@@ -107,7 +111,6 @@ void BitcoinExchange::processInput(const std::string& inputFile) {
         }
 
         float value = std::atof(valueStr.c_str());
-
         if (!isValidValue(value)) {
             if (value < 0) {
                 std::cerr << "👿 Error: not a positive number." << std::endl;
