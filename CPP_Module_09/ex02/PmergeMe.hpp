@@ -8,6 +8,10 @@
 
 class PmergeMe {
 public:
+
+    static int comparisons_vec;
+    static int comparisons_deq;
+
     static int jacobsthal(int n);
     static int jacobsthal_modified(int n);
 

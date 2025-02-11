@@ -10,7 +10,7 @@
 #include <fstream>
 #include "PmergeMe.hpp"
 
-void printSequence(const std::vector<int>& vec, size_t maxElements = 5) {
+void printSequence(const std::vector<int>& vec, size_t maxElements = 15) {
     for (size_t i = 0; i < vec.size(); ++i) {
         if (i >= maxElements && vec.size() > maxElements) {
             std::cout << "[...]";
@@ -27,7 +27,7 @@ bool hasDuplicates(const std::vector<int>& vec) {
 }
 
 void writeToFile(const std::vector<int>& notSorted, const std::vector<int>& sorted, const std::string& filename) {
-    std::ofstream outFile(filename.c_str());
+    std::ofstream outFile(filename.c_str(), std::ofstream::trunc);
     if (!outFile) {
         std::cerr << "Error: Unable to open file for writing." << std::endl;
         return;
@@ -42,6 +42,11 @@ void writeToFile(const std::vector<int>& notSorted, const std::vector<int>& sort
     }
 
     outFile.close();
+}
+
+int calculateTheoreticalComparisons(int n) {
+    if (n <= 1) return 0;
+    return static_cast<int>((n * (std::log(n) / std::log(2))) - (1.415 * n));
 }
 
 int main(int argc, char* argv[]) {
@@ -82,6 +87,14 @@ int main(int argc, char* argv[]) {
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << time_vec << " us" << std::endl;
     std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: " << time_deq << " us" << std::endl;
+
+    // Вывод количества сравнений
+    std::cout << "Comparisons for std::vector: " << PmergeMe::comparisons_vec << std::endl;
+    std::cout << "Comparisons for std::deque: " << PmergeMe::comparisons_deq << std::endl;
+
+    // Вывод теоретического количества сравнений
+    int theoreticalComparisons = calculateTheoreticalComparisons(vec.size());
+    std::cout << "Theoretical comparisons (Knuth’s formula): " << theoreticalComparisons << std::endl;
 
     writeToFile(std::vector<int>(deq.begin(), deq.end()), vec, "sorted_output.txt");
 
