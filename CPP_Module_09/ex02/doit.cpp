@@ -60,9 +60,9 @@ int main() {
         return 1;
     }
 
-    checkSorting(deq, "Deque sorting");
+    checkSorting(deq, "💎Deque sorting");
 
-    checkSorting(vec, "Vector sorting");
+    checkSorting(vec, "🦋Vector sorting");
 
     return 0;
 }

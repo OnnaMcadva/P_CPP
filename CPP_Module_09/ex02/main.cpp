@@ -45,8 +45,20 @@ void writeToFile(const std::vector<int>& notSorted, const std::vector<int>& sort
 }
 
 int calculateTheoreticalComparisons(int n) {
-    if (n <= 1) return 0;
-    return static_cast<int>((n * (std::log(n) / std::log(2))) - (1.415 * n));
+    int sum = 0;
+
+    for (int k = 1; k <= n; ++k) {
+        double value = (3.0 / 4.0) * k;
+        if (value < 1.0) {
+            sum += 0;
+        } else {
+            double logValue = std::log(value) / std::log(2);
+            int ceilLogValue = static_cast<int>(std::ceil(logValue));
+            sum += ceilLogValue;
+        }
+    }
+
+    return sum;
 }
 
 int main(int argc, char* argv[]) {
@@ -83,18 +95,17 @@ int main(int argc, char* argv[]) {
 
     std::cout << "After: ";
     printSequence(vec);
+    std::cout << "\n";
 
     std::cout << std::fixed << std::setprecision(5);
-    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << time_vec << " us" << std::endl;
-    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: " << time_deq << " us" << std::endl;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::🦋vector: " << time_vec << " us" << std::endl;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::💎deque: " << time_deq << " us\n" << std::endl;
 
-    // Вывод количества сравнений
-    std::cout << "Comparisons for std::vector: " << PmergeMe::comparisons_vec << std::endl;
-    std::cout << "Comparisons for std::deque: " << PmergeMe::comparisons_deq << std::endl;
+    std::cout << "Comparisons for std::🦋vector: " << PmergeMe::comparisons_vec << std::endl;
+    std::cout << "Comparisons for std::💎deque: " << PmergeMe::comparisons_deq << std::endl;
 
-    // Вывод теоретического количества сравнений
     int theoreticalComparisons = calculateTheoreticalComparisons(vec.size());
-    std::cout << "Theoretical comparisons (Knuth’s formula): " << theoreticalComparisons << std::endl;
+    std::cout << "\33[33mTheoretical comparisons (Knuth's formula): \33[0m" << theoreticalComparisons << std::endl;
 
     writeToFile(std::vector<int>(deq.begin(), deq.end()), vec, "sorted_output.txt");
 
