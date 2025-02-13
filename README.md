@@ -223,6 +223,11 @@ STL
         
         но не накладывает ограничений на доступ к другим элементам.
 
+#### ex02
+
+https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91
+
+https://medium.com/@sofia.huppertz/cpp09-school42-1efa42df7803
 
 ![Screenshot from 2025-02-02 21-31-33](https://github.com/user-attachments/assets/5c3b2aea-800c-4f2d-89e0-0d802f769e0e)
 
