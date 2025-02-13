@@ -19,14 +19,20 @@ size_t binarySearch(const std::vector<int>& vec, int value, int& comparisons) {
     return low;
 }
 
-int PmergeMe::jacobsthal(int n) {
+int  PmergeMe::jacobsthal(int n) {
     if (n == 0) return 0;
-    if (n == 1) return 1;
-    return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
-}
+    if (n == 1) return 2;
 
-int PmergeMe::jacobsthal_modified(int n) {
-    return jacobsthal(n + 2) - 1;
+    int prev2 = 0;
+    int prev1 = 1;
+    int current;
+
+    for (int i = 2; i <= n + 2; i++) {
+        current = prev1 + 2 * prev2;
+        prev2 = prev1;
+        prev1 = current;
+    }
+    return current - 1;
 }
 
 void PmergeMe::merge_insertion_sort(std::vector<int>& vec, double& time) {
