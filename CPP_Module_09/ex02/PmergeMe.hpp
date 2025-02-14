@@ -17,13 +17,13 @@ public:
 
 private:
     template <typename T>
-    static void _merge_insertion_sort(T& container, int pair_level, int& comparisons);
+    static void m_merge_insertion_sort(T& container, int pair_level, int& comparisons);
 
     template <typename T>
-    static void _swap_pair(T it, int pair_level);
+    static void m_swap_pair(T it, int pair_level);
 
     template <typename T>
-    static bool _comp(T lv, T rv) {
+    static bool m_comparisons(T lv, T rv) {
         if (sizeof(T) == sizeof(std::vector<int>::iterator)) {
             comparisons_vec++;
         } else if (sizeof(T) == sizeof(std::deque<int>::iterator)) {
@@ -39,4 +39,4 @@ private:
     }
 };
 
-long _jacobsthal_number(long n);
+long jacobsthal_fumber(long n);
