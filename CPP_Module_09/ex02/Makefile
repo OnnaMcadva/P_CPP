@@ -21,6 +21,7 @@ UNDERLINE   = "\033[4m"
 BLINK       = "\033[5m"
 
 NAME = PmergeMe
+DEBUG_NAME = PmergeMeDeb
 
 CC = c++
 CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98
@@ -28,22 +29,26 @@ CPP_FLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98
 RM = rm -rf
 
 FILES = main PmergeMe
+DEBUG_FILES = main PmergeMeDeb
 
 SRCS = $(addsuffix .cpp, $(FILES))
+DEBUG_SRCS = $(addsuffix .cpp, $(DEBUG_FILES))
 
 HDRS = $(wildcard *.hpp)
 
 OBJS_DIR = obj
 OBJ_DIRS = $(OBJS_DIR)
 OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(FILES)))
+DEBUG_OBJS = $(addprefix $(OBJS_DIR)/, $(addsuffix .o, $(DEBUG_FILES)))
 
-$(OBJS_DIR)/%.o: %.cpp
+$(OBJS_DIR)/%.o: %.cpp $(HDRS)
 	@printf $(GRAY)
 	@mkdir -p $(OBJS_DIR)
 	$(CC) $(CPP_FLAGS) -c -o $@ $<
 
 all: $(NAME)
 	@printf $(BOLD)$(GREEN_BR)"\n"
+	@printf $(BOLD)$(GREEN_BR)"Now I know EVERYTHING about sorting\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣶⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇⠀⠀⠀⠀\n"
 	@printf $(BOLD)$(GREEN_BR)"⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀\n"
@@ -56,20 +61,38 @@ all: $(NAME)
 	@printf $(BOLD)$(BLUE)"there are almost no good resources on this algorithm, between\n"
 	@printf $(BOLD)$(BLUE)"scientific papers, hard to read computer science books, or obscure\n"
 	@printf $(BOLD)$(BLUE)"threads on Reddit or Stack Overflow.\n"
-	@printf $(BOLD)$(BLUE)"🔧 🛠️ 🤖 💻\n\n"
+	@printf $(BOLD)$(BLUE)"		🔧 🛠️ 🤖 💻\n\n"
 
 $(NAME): $(OBJS)
 	@printf $(GRAY)
 	$(CC) $(CPP_FLAGS) -o $(NAME) $(OBJS)
 	@printf $(DEF_COLOR)
 
+debug: $(DEBUG_NAME)
+
+$(DEBUG_NAME): $(DEBUG_OBJS)
+	@printf $(GRAY)
+	$(CC) $(CPP_FLAGS) -o $(DEBUG_NAME) $(DEBUG_OBJS)
+	@printf $(DEF_COLOR)
+	@printf $(BOLD)$(YELLOW)"\nDebug version (PmergeMeDeb) compiled!\n\n"
+	@printf $(BOLD)$(GREEN_BR)
+	@printf "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣴⣶⡿⠿⠿⠿⠿⠿⠿⠿⢷\n"
+	@printf "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⡿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⠀⠀⠀⠀⢀⣾⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⠀⠀⠀⣰⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⠀⢠⣾⣿⠿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠀⣴⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
+	@printf "⠀⠈⠉    "$(BLUE)"Use ./PmergeMeDeb\n\n"
+
 clean:
 	@printf $(YELLOW)
-	$(RM) $(OBJS_DIR) $(NAME)
+	$(RM) $(OBJS_DIR) $(NAME) $(DEBUG_NAME)
 	@printf $(DEF_COLOR)
 
 fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug

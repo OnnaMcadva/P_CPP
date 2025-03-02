@@ -10,7 +10,7 @@
 #include <fstream>
 #include "PmergeMe.hpp"
 
-void printSequence(const std::vector<int>& vec, size_t maxElements = 15) {
+void printSequence(const std::vector<int>& vec, size_t maxElements = 21) {
     for (size_t i = 0; i < vec.size(); ++i) {
         if (i >= maxElements && vec.size() > maxElements) {
             std::cout << "[...]";
@@ -114,3 +114,4 @@ int main(int argc, char* argv[]) {
 
 /* valgrind ./PmergeMe `shuf -i 1-100 -n $RANDOM | tr "\n" " "` */
 /* ./PmergeMe `shuf -i 1-100 -n 21 | tr "\n" " "` */
+/* ./PmergeMeDeb `shuf -i 1-100 -n 21 | tr "\n" " "` */
