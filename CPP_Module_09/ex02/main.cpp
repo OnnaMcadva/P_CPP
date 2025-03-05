@@ -10,7 +10,7 @@
 #include <fstream>
 #include "PmergeMe.hpp"
 
-void printSequence(const std::vector<int>& vec, size_t maxElements = 21) {
+void printSequence(const std::vector<int>& vec, size_t maxElements = 22) {
     for (size_t i = 0; i < vec.size(); ++i) {
         if (i >= maxElements && vec.size() > maxElements) {
             std::cout << "[...]";
