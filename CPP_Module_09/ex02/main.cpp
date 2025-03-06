@@ -26,19 +26,19 @@ bool hasDuplicates(const std::vector<int>& vec) {
     return uniqueElements.size() != vec.size();
 }
 
-void writeToFile(const std::vector<int>& notSorted, const std::vector<int>& sorted, const std::string& filename) {
+void writeToFile(const std::vector<int>& deq, const std::vector<int>& vec, const std::string& filename) {
     std::ofstream outFile(filename.c_str(), std::ofstream::trunc);
     if (!outFile) {
         std::cerr << "Error: Unable to open file for writing." << std::endl;
         return;
     }
 
-    for (size_t i = 0; i < notSorted.size(); ++i) {
-        outFile << notSorted[i] << (i == notSorted.size() - 1 ? "\n" : " ");
+    for (size_t i = 0; i < deq.size(); ++i) {
+        outFile << deq[i] << (i == deq.size() - 1 ? "\n" : " ");
     }
 
-    for (size_t i = 0; i < sorted.size(); ++i) {
-        outFile << sorted[i] << (i == sorted.size() - 1 ? "\n" : " ");
+    for (size_t i = 0; i < vec.size(); ++i) {
+        outFile << vec[i] << (i == vec.size() - 1 ? "\n" : " ");
     }
 
     outFile.close();
@@ -98,14 +98,13 @@ int main(int argc, char* argv[]) {
     std::cout << "\n";
 
     std::cout << std::fixed << std::setprecision(5);
-    std::cout << "Time to process a range of " << vec.size() << " elements with std::🦋vector: " << time_vec << " us" << std::endl;
-    std::cout << "Time to process a range of " << deq.size() << " elements with std::💎deque: " << time_deq << " us\n" << std::endl;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << time_vec << " us" << std::endl;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: " << time_deq << " us\n" << std::endl;
 
-    std::cout << "Comparisons for std::🦋vector: " << PmergeMe::comparisons_vec << std::endl;
-    std::cout << "Comparisons for std::💎deque: " << PmergeMe::comparisons_deq << std::endl;
+    std::cout << "\033[96mPractical comparisons 💎(anmakaro's formula): \33[0m" << PmergeMe::comparisons_deq << std::endl;
 
     int theoreticalComparisons = calculateTheoreticalComparisons(vec.size());
-    std::cout << "\33[33mTheoretical comparisons (Knuth's formula): \33[0m" << theoreticalComparisons << std::endl;
+    std::cout << "\33[33mTheoretical comparisons 🦋(Knuth's formula): \33[0m" << theoreticalComparisons << std::endl;
 
     writeToFile(std::vector<int>(deq.begin(), deq.end()), vec, "sorted_output.txt");
 

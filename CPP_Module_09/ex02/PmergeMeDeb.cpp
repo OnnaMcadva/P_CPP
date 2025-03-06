@@ -3,13 +3,9 @@
 #include <deque>
 #include <sys/time.h>
 #include <iostream>
-
-#include <iostream>
 #include <vector>
 #include <algorithm>
 
-
-int PmergeMe::comparisons_vec;
 int PmergeMe::comparisons_deq;
 
 /* 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461,
@@ -33,6 +29,21 @@ long PmergeMe::jacobsthal_recipe(long n) {
 //     return current;
 // }
 
+std::deque<int>::iterator PmergeMe::moveIt(std::deque<int>::iterator it, int steps) {
+    std::advance(it, steps);
+    return it;
+}
+
+bool PmergeMe::compare_deq_iters(std::deque<int>::iterator left, std::deque<int>::iterator right) {
+    comparisons_deq++;
+    return *left < *right;
+}
+
+std::deque<std::deque<int>::iterator>::iterator PmergeMe::moveIt(std::deque<std::deque<int>::iterator>::iterator it, int steps) {
+    std::advance(it, steps);
+    return it;
+}
+
 void PmergeMe::swap_buns(std::deque<int>::iterator it, int bun_size) {
     std::deque<int>::iterator start = moveIt(it, -bun_size + 1);
     std::deque<int>::iterator end = moveIt(start, bun_size);
@@ -50,19 +61,35 @@ int PmergeMe::get_jacobsthal_count(int k, int tray_size) {
 }
 
 void PmergeMe::insert_from_tray(std::vector<int>& oven, std::vector<int>& tray, std::vector<int>::iterator& tray_it, 
-                                int baked_count, int& shift) { // Определяем границу для поиска (baked_count - shift)
+    int baked_count, int& shift) { // Определяем границу для поиска (baked_count - shift)
     std::vector<int>::iterator oven_bound = oven.begin() + std::min(baked_count - shift, static_cast<int>(oven.size()));
     if (oven_bound < oven.begin()) {
         oven_bound = oven.begin();
     } else if (oven_bound > oven.end()) {
-        oven_bound = oven.end();
+    oven_bound = oven.end();
     }
+
+// Добавляем отладку перед поиском
+    std::cout << "Preparing to insert " << *tray_it << " into oven, searching in range [";
+    for (std::vector<int>::iterator it = oven.begin(); it != oven.end(); ++it) {
+        if (it == oven_bound) {
+            std::cout << "| "; // Отмечаем границу oven_bound
+        }
+        std::cout << *it << (it + 1 != oven.end() ? ", " : "");
+    }
+    std::cout << "]" << std::endl;
 
 // Находим позицию для вставки с помощью upper_bound
     std::vector<int>::iterator index = std::upper_bound(oven.begin(), oven_bound, *tray_it);
 
+// Добавляем отладку после поиска
+    std::cout << "Found position for " << *tray_it << " at index " << (index - oven.begin()) << std::endl;
+
 // Вставляем элемент из tray в oven
     std::vector<int>::iterator inserted = oven.insert(index, *tray_it);
+
+// Выводим отладочное сообщение (оставляем как есть)
+    std::cout << "Inserted element: " << *inserted << std::endl;
 
 // Удаляем вставленный элемент из tray
     tray_it = tray.erase(tray_it);
@@ -74,10 +101,7 @@ void PmergeMe::insert_from_tray(std::vector<int>& oven, std::vector<int>& tray, 
 
 // Обновляем shift, если вставка произошла на позиции baked_count
     shift += (inserted - oven.begin()) == baked_count;
-
-// Выводим отладочное сообщение
-    std::cout << "Inserted element: " << *inserted << std::endl;
-}
+    }
 
 void PmergeMe::insert_from_tray(std::deque<std::deque<int>::iterator>& oven, 
         std::deque<std::deque<int>::iterator>& tray, 
@@ -85,17 +109,16 @@ void PmergeMe::insert_from_tray(std::deque<std::deque<int>::iterator>& oven,
         int baked_count, int& shift) {
     std::deque<std::deque<int>::iterator>::iterator oven_bound = moveIt(oven.begin(), baked_count - shift);
     if (oven_bound < oven.begin() || oven_bound > oven.end()) {
-    oven_bound = oven.end();
+        oven_bound = oven.end();
     }
     std::deque<std::deque<int>::iterator>::iterator index = 
     std::upper_bound(oven.begin(), oven_bound, *tray_it, compare_deq_iters);
     std::deque<std::deque<int>::iterator>::iterator inserted = oven.insert(index, *tray_it);
     tray_it = tray.erase(tray_it);
     if (tray_it != tray.begin() && !tray.empty()) { 
-    std::advance(tray_it, -1);
+        std::advance(tray_it, -1);
     }
     shift += (inserted - oven.begin()) == baked_count;
-    std::cout << "Inserted element: " << **inserted << std::endl;
 }
 
 void PmergeMe::Ford_Johnson(std::vector<int>& vec, int bun_size) {
@@ -107,7 +130,7 @@ void PmergeMe::Ford_Johnson(std::vector<int>& vec, int bun_size) {
 
     bool is_odd = bag_of_buns % 2 == 1;
 
-    std::cout << "\n ✨ Vector Start ✨ \n" << std::endl;
+    std::cout << "\n ✨ Start ✨ \n" << std::endl;
     std::cout << "level: " << bun_size << ", bag_of_buns: " << bag_of_buns << std::endl;
     std::cout << "is_odd: " << is_odd << std::endl;
 
@@ -117,13 +140,12 @@ void PmergeMe::Ford_Johnson(std::vector<int>& vec, int bun_size) {
     std::advance(finish, bun_size * bag_of_buns);
     VecIt dough = finish;
 
-    std::cout << "start: " << *start << ", finish: " << *finish << ", dough: " << *dough << std::endl;
+    std::cout << "start: " << *start << ", finish: beyond array (index " << bun_size * bag_of_buns 
+    << "), dough: beyond array (index " << bun_size * bag_of_buns << ")" << std::endl;
 
     if (is_odd) {
         std::advance(dough, -bun_size);
     }
-
-    std::cout << "start: " << *start << ", finish: " << *finish << ", dough: " << *dough << std::endl;
 
     std::cout << "Before pairs: ";
     for (VecIt it = vec.begin(); it != vec.end(); ++it) {
@@ -138,7 +160,6 @@ void PmergeMe::Ford_Johnson(std::vector<int>& vec, int bun_size) {
         std::advance(this_bun, bun_size - 1);
         std::advance(next_bun, batch_size - 1);
         if (next_bun < vec.end()) {
-            comparisons_vec++;
             if (*next_bun < *this_bun) {
                 for (int j = 0; j < bun_size; ++j) {
                     std::swap(*(it + j), *(it + bun_size + j));
@@ -152,8 +173,6 @@ void PmergeMe::Ford_Johnson(std::vector<int>& vec, int bun_size) {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-
-    std::cout << "start: " << *start << ", finish: " << *finish << ", dough: " << *dough << std::endl;
 
     Ford_Johnson(vec, bun_size * 2);
 
@@ -303,15 +322,9 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
 
     bool is_odd = bag_of_buns % 2 == 1;
 
-    std::cout << "\n ✨ Deque Start ✨ \n" << std::endl;
-    std::cout << "level: " << bun_size << ", bag_of_buns: " << bag_of_buns << std::endl;
-    std::cout << "is_odd: " << is_odd << std::endl;
-
     DeqIt start = deq.begin();
     DeqIt finish = moveIt(deq.begin(), bun_size * bag_of_buns);
     DeqIt dough = moveIt(finish, -(is_odd * bun_size));
-
-    std::cout << "start: " << *start << ", finish: " << *finish << ", dough: " << *dough << std::endl;
 
     int batch_size = 2 * bun_size;
     for (DeqIt it = start; it != dough; std::advance(it, batch_size)) {
@@ -323,15 +336,7 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
         }
     }
 
-    std::cout << "After sorting: ";
-    for (DeqIt it = deq.begin(); it != deq.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-
     Ford_Johnson(deq, bun_size * 2);
-
-    std::cout << "\n 🍕 Поехали 🍕 \n" << std::endl;
 
     std::deque<DeqIt> oven;
     std::deque<DeqIt> tray;
@@ -344,29 +349,15 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
         oven.push_back(moveIt(deq.begin(), bun_size * i - 1));
     }
 
-    std::cout << "oven now: ";
-    for (std::deque<DeqIt>::iterator it = oven.begin(); it != oven.end(); ++it) {
-        std::cout << **it << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << "tray now: ";
-    for (std::deque<DeqIt>::iterator it = tray.begin(); it != tray.end(); ++it) {
-        std::cout << **it << " ";
-    }
-    std::cout << std::endl;
-
     if (is_odd) {
         DeqIt odd_bun = moveIt(dough, bun_size - 1);
         tray.push_back(odd_bun);
-        std::cout << "odd bun is added to tray: " << *odd_bun << std::endl;
     }
 
     int baked_count = 0;
     for (int k = 2; k <= static_cast<int>(tray.size()) + 1; ++k) {
         int buns_to_bake = get_jacobsthal_count(k, tray.size());
         if (buns_to_bake == 0) break;
-        std::cout << "Inserting " << buns_to_bake << " elements from tray to oven. Jacobsthal step: " << jacobsthal_recipe(k) << std::endl;
         int shift = 0;
         std::deque<DeqIt>::iterator tray_it = moveIt(tray.begin(), buns_to_bake - 1);
         for (int i = 0; i < buns_to_bake; ++i) {
@@ -377,11 +368,10 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
 
     for (std::deque<int>::size_type i = 0; i < tray.size(); i++) {
         std::deque<DeqIt>::iterator tray_bun = moveIt(tray.begin(), i);
-        std::deque<DeqIt>::iterator oven_edge = moveIt(oven.begin(), oven.size() - tray.size() + i);
+        std::deque<DeqIt>::iterator oven_edge = moveIt(oven.begin(), oven.size() - tray.size() + i + 1);
         std::deque<DeqIt>::iterator bake_spot = 
             std::upper_bound(oven.begin(), oven_edge, *tray_bun, compare_deq_iters);
         oven.insert(bake_spot, *tray_bun);
-        std::cout << "Inserted remaining element: " << **tray_bun << std::endl;
     }
     
     std::deque<int> copy;
@@ -393,12 +383,6 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
         }
     }
     
-    std::cout << "copy after assembly: ";
-    for (std::deque<int>::iterator it = copy.begin(); it != copy.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-    
     DeqIt deq_it = deq.begin();
     std::deque<int>::iterator copy_it = copy.begin();
     while (copy_it != copy.end()) {
@@ -406,12 +390,6 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
         deq_it++;
         copy_it++;
     }
-    
-    std::cout << "Final container: ";
-    for (DeqIt it = deq.begin(); it != deq.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << "\n=== End sorting ===\n" << std::endl;
 }
 
 double get_current_time() {
@@ -422,7 +400,6 @@ double get_current_time() {
 
 void PmergeMe::merge_insertion_sort(std::vector<int>& vec, double& time_vec) {
     double start = get_current_time();
-    comparisons_vec = 0;
     Ford_Johnson(vec, 1);
     double end = get_current_time();
     time_vec = (end - start) * 1000000.0;
