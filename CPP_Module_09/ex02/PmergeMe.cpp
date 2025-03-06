@@ -63,7 +63,7 @@ void PmergeMe::insert_from_tray(std::vector<int>& oven, std::vector<int>& tray, 
     }
 
     shift += (inserted - oven.begin()) == baked_count;
-    }
+}
 
 void PmergeMe::insert_from_tray(std::deque<std::deque<int>::iterator>& oven, 
         std::deque<std::deque<int>::iterator>& tray, 
