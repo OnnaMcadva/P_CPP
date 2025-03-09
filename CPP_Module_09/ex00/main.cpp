@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
 
     BitcoinExchange exchange("data.csv");
     if (!exchange.isDatabaseLoaded()) {
+        std::cerr << "Error: failed to load database." << std::endl;
         return 1;
     }
 
