@@ -10,6 +10,10 @@
 class PmergeMe {
 public:
     static int comparisons_deq;
+    PmergeMe();
+    PmergeMe(const PmergeMe& other);
+    PmergeMe& operator=(const PmergeMe& other);
+    ~PmergeMe();
     static void merge_insertion_sort(std::vector<int>& vec, double& time_vec);
     static void merge_insertion_sort(std::deque<int>& deq, double& time_deq);
 private:

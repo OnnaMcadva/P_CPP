@@ -8,6 +8,18 @@
 
 int PmergeMe::comparisons_deq;
 
+PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe& other) {
+        (void)other;
+}
+PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
+    if (this != &other) {
+        (void)other;
+    }
+    return *this;
+}
+PmergeMe::~PmergeMe() {}
+
 long PmergeMe::jacobsthal_recipe(long n) {
     return round((pow(2, n + 1) + pow(-1, n)) / 3);
 }

@@ -8,6 +8,18 @@
 
 int PmergeMe::comparisons_deq;
 
+PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe(const PmergeMe& other) {
+        (void)other;
+}
+PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
+    if (this != &other) {
+        (void)other;
+    }
+    return *this;
+}
+PmergeMe::~PmergeMe() {}
+
 /* 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461,
     10 923, 21 845, 43 691, 87 381, 174 763, 349 525, … */
 
