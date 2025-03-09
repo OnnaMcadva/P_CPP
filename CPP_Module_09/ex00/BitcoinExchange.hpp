@@ -7,6 +7,8 @@ class BitcoinExchange {
 public:
     BitcoinExchange();
     BitcoinExchange(const std::string& database);
+    BitcoinExchange(const BitcoinExchange& other);
+    BitcoinExchange& operator=(const BitcoinExchange& other);
     ~BitcoinExchange();
     void loadDatabase(const std::string& database);
     void processInput(const std::string& inputFile);

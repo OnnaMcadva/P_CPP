@@ -10,6 +10,17 @@ BitcoinExchange::BitcoinExchange(const std::string& database) : databaseLoaded(f
     loadDatabase(database);
 }
 
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) 
+    : exchangeRates(other.exchangeRates), databaseLoaded(other.databaseLoaded) {}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
+    if (this != &other) { 
+        exchangeRates = other.exchangeRates;
+        databaseLoaded = other.databaseLoaded;
+    }
+    return *this;
+}
+
 BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::loadDatabase(const std::string& database) {
