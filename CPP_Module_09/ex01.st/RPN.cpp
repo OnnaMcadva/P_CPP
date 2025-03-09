@@ -1,7 +1,13 @@
 #include "RPN.hpp"
 
 RPN::RPN() {}
-
+RPN::RPN(const RPN& other) : stack(other.stack) {}
+RPN& RPN::operator=(const RPN& other) {
+    if (this != &other) {
+        stack = other.stack;
+    }
+    return *this;
+}
 RPN::~RPN() {}
 
 int RPN::evaluate(const std::string &expression) {
@@ -9,11 +15,11 @@ int RPN::evaluate(const std::string &expression) {
         char ch = expression[i];
 
         if (std::isspace(ch)) {
-            continue; // Пропускаем пробелы
+            continue;
         }
 
         if (std::isdigit(ch)) {
-            stack.push(ch - '0'); // Преобразуем символ в число и добавляем в стек
+            stack.push(ch - '0');
         } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
             if (stack.size() < 2) {
                 throw std::runtime_error("🦋 Error: invalid expression");
@@ -28,7 +34,7 @@ int RPN::evaluate(const std::string &expression) {
         throw std::runtime_error("🦋 Error: invalid expression");
     }
 
-    return stack.top(); // Возвращаем результат
+    return stack.top();
 }
 
 void RPN::performOperation(char op) {
