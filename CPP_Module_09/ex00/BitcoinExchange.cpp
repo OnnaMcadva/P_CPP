@@ -82,10 +82,13 @@ bool BitcoinExchange::isValidValue(float value) {
 
 std::string BitcoinExchange::findClosestDate(const std::string& date) {
     std::map<std::string, float>::iterator it = exchangeRates.lower_bound(date);
-    if (it == exchangeRates.begin()) {
-        return it->first;
-    }
-    if (it == exchangeRates.end() || it->first != date) {
+    if (it == exchangeRates.end()) { 
+        --it; 
+    } else if (it->first == date) { 
+        return date;
+    } else if (it == exchangeRates.begin()) { 
+        throw std::runtime_error("🦄No earlier date available in database🦄");
+    } else { 
         --it;
     }
     return it->first;
@@ -130,10 +133,15 @@ void BitcoinExchange::processInput(const std::string& inputFile) {
             }
             continue;
         }
-
-        std::string closestDate = findClosestDate(date);
-        float rate = exchangeRates[closestDate];
-        std::cout << date << " \033[45m=>\033[0m " << value << " = " << value * rate << std::endl;
+        try {
+            std::string closestDate = findClosestDate(date);
+            float rate = exchangeRates[closestDate];
+            std::cout << date << " \033[45m=>\033[0m " << value << " = " << value * rate << std::endl;
+        } catch (const std::runtime_error& e) {
+            std::cerr << e.what() << std::endl;
+            continue;
+        }
+       
     }
     file.close();
 }
