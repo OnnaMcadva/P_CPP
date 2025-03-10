@@ -119,16 +119,24 @@ void PmergeMe::insert_from_tray(std::deque<std::deque<int>::iterator>& oven,
         std::deque<std::deque<int>::iterator>& tray, 
         std::deque<std::deque<int>::iterator>::iterator& tray_it, 
         int baked_count, int& shift) {
-    std::deque<std::deque<int>::iterator>::iterator oven_bound = moveIt(oven.begin(), baked_count - shift);
-    if (oven_bound < oven.begin() || oven_bound > oven.end()) {
+    int offset = baked_count - shift;
+    std::deque<std::deque<int>::iterator>::iterator oven_bound;
+    // Проверяем границы перед сдвигом
+    if (offset < 0) {
+        oven_bound = oven.begin();
+    } else if (offset >= static_cast<int>(oven.size())) {
         oven_bound = oven.end();
+    } else {
+        oven_bound = moveIt(oven.begin(), offset);
     }
     std::deque<std::deque<int>::iterator>::iterator index = 
-    std::upper_bound(oven.begin(), oven_bound, *tray_it, compare_deq_iters);
+        std::upper_bound(oven.begin(), oven_bound, *tray_it, compare_deq_iters);
     std::deque<std::deque<int>::iterator>::iterator inserted = oven.insert(index, *tray_it);
     tray_it = tray.erase(tray_it);
-    if (tray_it != tray.begin() && !tray.empty()) { 
+    if (!tray.empty() && tray_it != tray.begin()) { 
         std::advance(tray_it, -1);
+    } else if (!tray.empty()) {
+        tray_it = tray.begin();
     }
     shift += (inserted - oven.begin()) == baked_count;
 }
@@ -370,6 +378,9 @@ void PmergeMe::Ford_Johnson(std::deque<int>& deq, int bun_size) {
     for (int k = 2; k <= static_cast<int>(tray.size()) + 1; ++k) {
         int buns_to_bake = get_jacobsthal_count(k, tray.size());
         if (buns_to_bake == 0) break;
+        if (buns_to_bake > static_cast<int>(tray.size())) {
+            buns_to_bake = tray.size();
+        }
         int shift = 0;
         std::deque<DeqIt>::iterator tray_it = moveIt(tray.begin(), buns_to_bake - 1);
         for (int i = 0; i < buns_to_bake; ++i) {
